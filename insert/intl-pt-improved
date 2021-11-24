@@ -1,0 +1,16 @@
+
+// The ã and õ were inserted under the vacant level3 of the keys
+// <F> and <G>. The ç was inserted under the level3 of the key of the letter
+// <C> like in the Macintosh layout since it is more accessible there.
+// The ç under the level3 of the key <,> was kept so people used to us(intl)
+// will still find it there. The 'copyright' and 'cent' chars were moved to
+// the level3 of <X>.
+partial alphanumeric_keys
+xkb_symbols "intl-pt-enhanced" {
+    include "us(intl)"
+    name[Group1]= "English (intl., with AltGr dead keys plus a/otilde)";
+    key <AC04> { [        f, F,           atilde,       Atilde   ] };
+    key <AC05> { [        g, G,           otilde,       Otilde   ] };
+    key <AB03> { [        c, C,           ccedilla,     Ccedilla ] };
+    key <AB05> { [        b, B,           copyright,    cent     ] };
+};
