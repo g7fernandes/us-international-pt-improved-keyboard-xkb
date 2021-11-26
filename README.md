@@ -35,7 +35,9 @@ The third level of the keys of the letters <kbd>F</kbd>, <kbd>G</kbd>, <kbd>H</k
 The ã, õ, and c cedilha were mapped as follows.
 
 ã → <kbd>AltGr</kbd> + <kbd>F</kbd>
+
 õ → <kbd>AltGr</kbd> + <kbd>G</kbd>
+
 ç → <kbd>AltGr</kbd> + <kbd>c</kbd>
 
 ### US Intl. Portuguese enhanced with AltGr Dead Keys
