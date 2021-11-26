@@ -1,0 +1,6 @@
+        <variant>
+          <configItem>
+            <name>altgr-intl-pt-enh-circum-lv2</name>
+            <description>English (intl., AltGR o/atilde, AltGR dead keys except circumflex)</description>
+          </configItem>
+        </variant>
