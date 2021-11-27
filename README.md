@@ -40,9 +40,13 @@ The ã, õ, and c cedilha were mapped as follows.
 
 ç → <kbd>AltGr</kbd> + <kbd>c</kbd>
 
+Since the *ã* is very common, it is located under the third level of the letter **F** (key `<AC04>`). The *õ* is next to it under key ther third level of **G** (key `<AC05>`). Althouth not very common, it still would require the combination of at least three keys using the dead tilde. The *ç* was placed under the third level of **C** (key  `key <AB03>`), as it is found in the MacOS keyboard. Placing it there is more intuitive, some other layouts like [UK extended](https://en.wikipedia.org/wiki/QWERTY#United_Kingdom_(Extended)_Layout) have the c cedilla there. 
+
 ### US Intl. Portuguese enhanced with AltGr Dead Keys
 
-The same modifications as done in the *US Intl. Portuguese Enhanced*, but is based on the *us (intl) English (intl., with AltGr dead keys)* layout, that moves all accents to the third level. This is very useful for people that use quotes and double quotes frequently.
+This layout is based on another layout distributed on popular linux distros, whose author arguments that it is easier (or at least it takes the same effort) to type using the already available accentuated letters under the third level of some keys then using dead keys. Programmers and people that use quotes and double quotes frequently may find this layout very useful, since the symbols `\` ~ ' " ^` will neither require pressing <kbd>space</kbd> to be inserted, nor combination with the <kbd>AltGr</kbd>.
+
+This layout has same modifications as done in the *US Intl. Portuguese Enhanced*, but is based on the *us (intl) English (intl., with AltGr dead keys)* layout, that moves all accents to the third level.
 
 The most frequent accentuated letters (a tilde and acutes) are available on the third level (AltGr) in this layout, therefore they can be typed with the combination of two keys. Typing quotes, acute, circumflex and grave will not require typing space in the first level. 
 
@@ -50,11 +54,15 @@ The disadvantage is that the dead circumflex still need combination, now with <k
 
 The dead tilde, dead acute and dead diaeresis can be typed using <kbd>AltGr</kbd> plus the usual keys.  
 
+(Maybe this layout could be officially distributed replacing the current  US Intl. AltGr?)
+
 ### US Intl. Portuguese enhanced with AltGr Dead Keys except circumflex
 
-The same as *US Intl. Portuguese enhanced with AltGr Dead Keys*, except that the circumflex is dead key in the second level, as in the default US Intl. layout. 
+The same as *US Intl. Portuguese enhanced with AltGr Dead Keys*, except that the circumflex is dead key in the second level, as in the default US Intl. layout. The key <kbd>6</kbd> is already hard to reach, and the circumflex is not very common in programming languages. Since <kbd>shift</kbd> is a bit easier to reach, it is justifiable to keep it dead on the second level.
 
-## Installation
+## Installation 
+
+### On Linux
 
 Clone this repository and execute the `install.sh` with `-h`to see the options. The options are for choosing whith layout(s) to install. If no option is passed, all three layouts will be installed.
 
@@ -70,6 +78,10 @@ After installing, restart the session or reboot the computer, and the layout wil
 [Using an alternative keyboard layout in Gnome](https://help.gnome.org/users/gnome-help/stable/keyboard-layouts.html.en)
 
 [Using an alternative keyboard layout in KDE](https://userbase.kde.org/System_Settings/Keyboard)
+
+### On Microsoft Windows
+
+The source code for the Microsoft Layout Creator is available under the `Microsoft_Layouts` directory. You can create your own DLLs with the [Microsoft Layout Creator](https://www.microsoft.com/en-us/download/details.aspx?id=102134), or you can install directly the layouts using the MSI installer that I'm supplying under `Microsoft_Layouts/<name_of_the_layout>/Microsoft_Package`.
 
 ## Development
 
