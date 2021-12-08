@@ -146,6 +146,7 @@ LAYOUT=()
 
 if ! options=$( getopt -o rhadtcq -l revert,help,ajuda,deadkeys,third-lv-deadkeys,lv3-dead-lv2-circum,qwerty-colemak-altgr -n "$0" -- "$@" ); then
     echo "Incorrect options provided"
+    show_help_en
     exit 1
 fi
 
@@ -205,118 +206,122 @@ SYMBOLS_FILE="$XKB_PATH/symbols/us"
 
 for OPT in "${LAYOUT[@]}"; do
     if [[ $OPT == "t" ]]; then
+        LAYOUT_NAME="altgr-intl-pt-improved"
 
         FILE="$XKB_PATH/rules/evdev.xml"
         LINE=$(awk '/<name>us</{f=1} f && /<variantList>/ {print NR; exit}' /usr/share/X11/xkb/rules/evdev.xml)
         exit_if_empty "$LINE" "$FILE"
-        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/evdev_altgr.xml" "$LINE" 1> /dev/null
+        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/$LAYOUT_NAME/evdev.xml" "$LINE" 1> /dev/null
         exit_on_error $? "$FILE"
 
         FILE="$XKB_PATH/rules/base.xml"
         LINE=$(awk '/<name>us</{f=1} f && /<variantList>/ {print NR; exit}' /usr/share/X11/xkb/rules/evdev.xml)
         exit_if_empty "$LINE" "$FILE"
-        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/base_altgr.xml" "$LINE" 1> /dev/null
+        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/$LAYOUT_NAME/base.xml" "$LINE" 1> /dev/null
         exit_on_error $? "$FILE"
 
         FILE="$XKB_PATH/rules/evdev.lst"
         LINE=$(grep -n -m 1 "! variant" "$FILE" | cut -f1 -d:)
         exit_if_empty "$LINE" "$FILE"
-        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/evdev_altgr.lst" "$LINE" 1> /dev/null
+        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/$LAYOUT_NAME/evdev.lst" "$LINE" 1> /dev/null
         exit_on_error $? "$FILE"
 
         FILE="$XKB_PATH/rules/base.lst"
         LINE=$(grep -n -m 1 "! variant" "$FILE" | cut -f1 -d:)
         exit_if_empty "$LINE" "$FILE"
-        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/base_altgr.lst" "$LINE" 1> /dev/null
+        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/$LAYOUT_NAME/base.lst" "$LINE" 1> /dev/null
         exit_on_error $? "$FILE"
 
-        cat "$SCRIPT_DIR/insert/altgr-intl-pt-improved" >> $SYMBOLS_FILE
+        cat "$SCRIPT_DIR/insert/$LAYOUT_NAME/us" >> $SYMBOLS_FILE
         echo "Installed layout altgr-intl-pt-enhanced  us: English (pt. enhanced AltGr dead keys)"
 
     elif [[ $OPT == "d" ]]; then
+        LAYOUT_NAME="intl-pt-improved"
 
         FILE="$XKB_PATH/rules/evdev.xml"
         LINE=$(awk '/<name>us</{f=1} f && /<variantList>/ {print NR; exit}' /usr/share/X11/xkb/rules/evdev.xml)
         exit_if_empty "$LINE" "$FILE"
-        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/evdev.xml" "$LINE" 1> /dev/null
+        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/$LAYOUT_NAME/evdev.xml" "$LINE" 1> /dev/null
         exit_on_error $? "$FILE"
 
         FILE="$XKB_PATH/rules/base.xml"
         LINE=$(awk '/<name>us</{f=1} f && /<variantList>/ {print NR; exit}' /usr/share/X11/xkb/rules/evdev.xml)
         exit_if_empty "$LINE" "$FILE"
-        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/base.xml" "$LINE" 1> /dev/null
+        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/$LAYOUT_NAME/base.xml" "$LINE" 1> /dev/null
         exit_on_error $? "$FILE"
 
         FILE="$XKB_PATH/rules/evdev.lst"
         LINE=$(grep -n -m 1 "! variant" "$FILE" | cut -f1 -d:)
         exit_if_empty "$LINE" "$FILE"
-        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/evdev.lst" "$LINE" 1> /dev/null
+        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/$LAYOUT_NAME/evdev.lst" "$LINE" 1> /dev/null
         exit_on_error $? "$FILE"
 
         FILE="$XKB_PATH/rules/base.lst"
         LINE=$(grep -n -m 1 "! variant" "$FILE" | cut -f1 -d:)
         exit_if_empty "$LINE" "$FILE"
-        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/base.lst" "$LINE" 1> /dev/null
+        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/$LAYOUT_NAME/base.lst" "$LINE" 1> /dev/null
         exit_on_error $? "$FILE"
 
-        cat "$SCRIPT_DIR/insert/intl-pt-improved" >> $SYMBOLS_FILE
+        cat "$SCRIPT_DIR/insert/$LAYOUT_NAME/us" >> $SYMBOLS_FILE
         echo "Installed layout intl-pt-enhanced us: English (pt. enhanced)"
 
     elif [[ $OPT == "c" ]]; then
+        LAYOUT_NAME="altgr-intl-pt-improved_dead-circumflex"
 
         FILE="$XKB_PATH/rules/evdev.xml"
         LINE=$(awk '/<name>us</{f=1} f && /<variantList>/ {print NR; exit}' /usr/share/X11/xkb/rules/evdev.xml)
         exit_if_empty "$LINE" "$FILE"
-        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/evdev_altgr_dead-circumflex.xml" "$LINE" 1> /dev/null
+        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/$LAYOUT_NAME/evdev.xml" "$LINE" 1> /dev/null
         exit_on_error $? "$FILE"
 
         FILE="$XKB_PATH/rules/base.xml"
         LINE=$(awk '/<name>us</{f=1} f && /<variantList>/ {print NR; exit}' /usr/share/X11/xkb/rules/evdev.xml)
         exit_if_empty "$LINE" "$FILE"
-        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/base_altgr_dead-circumflex.xml" "$LINE" 1> /dev/null
+        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/$LAYOUT_NAME/base.xml" "$LINE" 1> /dev/null
         exit_on_error $? "$FILE"
 
         FILE="$XKB_PATH/rules/evdev.lst"
         LINE=$(grep -n -m 1 "! variant" "$FILE" | cut -f1 -d:)
         exit_if_empty "$LINE" "$FILE"
-        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/evdev_altgr_dead-circumflex.lst" "$LINE" 1> /dev/null
+        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/$LAYOUT_NAME/evdev.lst" "$LINE" 1> /dev/null
         exit_on_error $? "$FILE"
 
         FILE="$XKB_PATH/rules/base.lst"
         LINE=$(grep -n -m 1 "! variant" "$FILE" | cut -f1 -d:)
         exit_if_empty "$LINE" "$FILE"
-        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/base_altgr_dead-circumflex.lst" "$LINE" 1> /dev/null
+        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/$LAYOUT_NAME/base.lst" "$LINE" 1> /dev/null
         exit_on_error $? "$FILE"
 
-        cat "$SCRIPT_DIR/insert/altgr-intl-pt-improved_dead-circumflex" >> $SYMBOLS_FILE
+        cat "$SCRIPT_DIR/insert/$LAYOUT_NAME/us" >> $SYMBOLS_FILE
         echo "Instaled layout   altgr-intl-pt-enh-circum-lv2   us: English (intl., with AltGr dead keys plus a/otilde & circumflex lv2)"
     elif [[ $OPT == "q" ]]; then
+        LAYOUT_NAME="colemak-altgrs"
 
         FILE="$XKB_PATH/rules/evdev.xml"
         LINE=$(awk '/<name>us</{f=1} f && /<variantList>/ {print NR; exit}' /usr/share/X11/xkb/rules/evdev.xml)
         exit_if_empty "$LINE" "$FILE"
-        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/evdev_colemak_altgrs.xml" "$LINE" 1> /dev/null
+        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/$LAYOUT_NAME/evdev.xml" "$LINE" 1> /dev/null
         exit_on_error $? "$FILE"
 
         FILE="$XKB_PATH/rules/base.xml"
         LINE=$(awk '/<name>us</{f=1} f && /<variantList>/ {print NR; exit}' /usr/share/X11/xkb/rules/evdev.xml)
         exit_if_empty "$LINE" "$FILE"
-        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/base_colemak_altgrs.xml" "$LINE" 1> /dev/null
+        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/$LAYOUT_NAME/base.xml" "$LINE" 1> /dev/null
         exit_on_error $? "$FILE"
 
         FILE="$XKB_PATH/rules/evdev.lst"
         LINE=$(grep -n -m 1 "! variant" "$FILE" | cut -f1 -d:)
         exit_if_empty "$LINE" "$FILE"
-        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/evdev_colemak_altgrs.lst" "$LINE" 1> /dev/null
+        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/$LAYOUT_NAME/evdev.lst" "$LINE" 1> /dev/null
         exit_on_error $? "$FILE"
 
         FILE="$XKB_PATH/rules/base.lst"
         LINE=$(grep -n -m 1 "! variant" "$FILE" | cut -f1 -d:)
         exit_if_empty "$LINE" "$FILE"
-        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/base_colemak_altgrs.lst" "$LINE" 1> /dev/null
+        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/$LAYOUT_NAME/base.lst" "$LINE" 1> /dev/null
         exit_on_error $? "$FILE"
 
-        cat "$SCRIPT_DIR/insert/colemak-altgrs" >> $SYMBOLS_FILE
+        cat "$SCRIPT_DIR/insert/$LAYOUT_NAME/us" >> $SYMBOLS_FILE
         echo "Instaled layout   qwery-with-colemak-altgr      us: English (QWERTY with colemak altgr)"
     fi
 done
