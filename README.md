@@ -68,6 +68,34 @@ Although the preview shows a ISO layout, this layout is intended for ANSI (but y
 
 The same as *US Intl. Portuguese enhanced with AltGr Dead Keys*, except that the circumflex is dead key in the second level, as in the default US Intl. layout. The key <kbd>6</kbd> is already hard to reach, and the circumflex is not very common in programming languages. Since <kbd>shift</kbd> is a bit easier to reach, it is justifiable to keep it dead on the second level.
 
+### US (standard QWERTY) with Colemak's 3rd level dead keys and UTF-8 symbols
+
+This layout is a US (english) QWERTY, but dead keys and some UTF-8 symbols, common in international layouts, are present in the 3rd level (AltGr) as it is in the Colemak keyboard. For example, the circumfle**x** accent is under the third level of the keys of the letter <kbd>X</kbd> of the US layout: [<kbd>AltGr</kbd> + <kbd>X</kbd>] + <kbd>A</kbd> → â.
+
+
+![Layout Preview](pics/qwery_us_colemak_altgr.png "English (intl. qwerty with colemak's algtrs)")
+
+Some notable advantages of this layout is that the some accents like circumflex and in a shorter reach in comparison with the previous layouts. The _õ_ is also more accessible in relation to the US Intl. AltGr portuguese enhanced.
+
+The dead keys are in easy to remember positions:
+
+* (ŭ) **B**reve - AltGr+[b]
+* (ç) cedilla - AltGr+[,]
+* (ü) **D**iaeresis (umlaut) - AltGr+[d]
+* (ú) acu**T**e - AltGr+[t]
+* (ű) double acute - AltGr+Shift+[t]
+* (ù) g**R**rave - AltGr+[r]
+* (ǔ) **H**áček (caron) - AltGr+[h]
+* (ų) o**G**onek - AltGr+[g]
+* (ū) **M**acron - AltGr+[m]
+* (ũ) **tilde** - AltGr+[`]
+* (ů) ring - AltGr+[k]
+* (ċ) dot (.) - AltGr+[.]
+* (û) circumfle**X** - AltGr+[x]
+* Special characters - AltGr+[\] (only MS Windows/Mac)
+
+More information about [Colemak multilingual support here](https://colemak.com/Multilingual).
+
 ## Installation
 
 ### On Linux
@@ -100,5 +128,9 @@ The proposed layouts in the **main branch** of this repository must follow the g
 * All phonetic symbols available on the *English (intl.)* must be also availabe in there;
 * Keep, when possible, the phonetic symbols of the languages (that use latin alphabet) with largest number of speakers where they are in the  *English (intl.)* layout;
 * Keep, when possible, the accents under the same key as labeled in the phisical ANSI keyboard.
+
+## Relate projects
+
+* [German Portuguese Keyboard Layout](https://github.com/g7fernandes/german-portuguese-keyboard-xkb). Layout for iso-de keyboards improved for portuguese.
 
 # Layout do Teclado EUA Internacional melhorado para a Língua Portuguesa

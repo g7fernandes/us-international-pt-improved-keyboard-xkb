@@ -7,7 +7,7 @@ SCRIPT_DIR=$(dirname "$SCRIPT")
 
 # The default path to xkb is the one below.
 # You can use the 'tests' directory for testing:
-# XKB_PATH=tests/xkb ./install.sh
+# XKB_PATH=test/xkb ./install.sh
 if [ -z "$XKB_PATH" ]; then
     XKB_PATH="/usr/share/X11/xkb"
 else
@@ -104,6 +104,9 @@ Uso: ./install [OPÇÕES]
   -c, --lv3-dead-lv2-circum   Mesmo que -t, mas mantém circunflexo morto no ní-
                               -vel 2 de 6. Ou seja, para digitar 'ê'
                               [Shift + 6] + E.
+  -q  --qwerty-colemak-altgr  Teclado US, mas com teclas mortas e extra carac-
+                              -teres UTF-8 no nível 3 (AltGR) como num teclado
+                              colemak https://colemak.com/Multilingual
   -r, --revert                Desisntala o layout, revertendo os arquivos para o
                               estado anterior.
   -h, --help                  Help in english.
@@ -129,6 +132,10 @@ Uso: ./install [OPÇÕES]
   -c, --lv3-dead-lv2-circum   Same as the previous -t, but the circumflex is
                               kept on the second level. To type 'ê', one must
                               type [Shift + 6] + E.
+  -q  --qwerty-colemak-altgr  US layout for standard QWERTY, but with the dead
+                              keys and extra UTF-8 characters on the third level
+                              (altgr) of some keys like in the colemak layout
+                              https://colemak.com/Multilingual
   -r, --revert                Uninstalls the layout, reverting the backup files.
   -h, --help                  Help in english.
   -a, --ajuda                 Ajuda em português.
@@ -137,7 +144,7 @@ Uso: ./install [OPÇÕES]
 
 LAYOUT=()
 
-if ! options=$( getopt -o rhadtc -l revert,help,ajuda,deadkeys,third-lv-deadkeys,lv3-dead-lv2-circum -n "$0" -- "$@" ); then
+if ! options=$( getopt -o rhadtcq -l revert,help,ajuda,deadkeys,third-lv-deadkeys,lv3-dead-lv2-circum,qwerty-colemak-altgr -n "$0" -- "$@" ); then
     echo "Incorrect options provided"
     exit 1
 fi
@@ -154,6 +161,9 @@ while true; do
         ;;
     --lv3-dead-lv2-circum |-c)
         LAYOUT+=('c')
+        ;;
+    --qwerty-colemak-altgr|-q)
+        LAYOUT+=('q')
         ;;
     --revert|-r)
         revert
@@ -180,7 +190,7 @@ while true; do
 done
 
 if [[ -z ${LAYOUT[0]} ]]; then
-    LAYOUT=('c' 'd' 't')
+    LAYOUT=('c' 'd' 't' 'q')
 fi
 
 if [ "$EUID" -ne 0 ]
@@ -280,6 +290,34 @@ for OPT in "${LAYOUT[@]}"; do
 
         cat "$SCRIPT_DIR/insert/altgr-intl-pt-improved_dead-circumflex" >> $SYMBOLS_FILE
         echo "Instaled layout   altgr-intl-pt-enh-circum-lv2   us: English (intl., with AltGr dead keys plus a/otilde & circumflex lv2)"
+    elif [[ $OPT == "q" ]]; then
+
+        FILE="$XKB_PATH/rules/evdev.xml"
+        LINE=$(awk '/<name>us</{f=1} f && /<variantList>/ {print NR; exit}' /usr/share/X11/xkb/rules/evdev.xml)
+        exit_if_empty "$LINE" "$FILE"
+        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/evdev_colemak_altgrs.xml" "$LINE" 1> /dev/null
+        exit_on_error $? "$FILE"
+
+        FILE="$XKB_PATH/rules/base.xml"
+        LINE=$(awk '/<name>us</{f=1} f && /<variantList>/ {print NR; exit}' /usr/share/X11/xkb/rules/evdev.xml)
+        exit_if_empty "$LINE" "$FILE"
+        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/base_colemak_altgrs.xml" "$LINE" 1> /dev/null
+        exit_on_error $? "$FILE"
+
+        FILE="$XKB_PATH/rules/evdev.lst"
+        LINE=$(grep -n -m 1 "! variant" "$FILE" | cut -f1 -d:)
+        exit_if_empty "$LINE" "$FILE"
+        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/evdev_colemak_altgrs.lst" "$LINE" 1> /dev/null
+        exit_on_error $? "$FILE"
+
+        FILE="$XKB_PATH/rules/base.lst"
+        LINE=$(grep -n -m 1 "! variant" "$FILE" | cut -f1 -d:)
+        exit_if_empty "$LINE" "$FILE"
+        insert_text_to_file "$FILE" "$SCRIPT_DIR/insert/base_colemak_altgrs.lst" "$LINE" 1> /dev/null
+        exit_on_error $? "$FILE"
+
+        cat "$SCRIPT_DIR/insert/colemak-altgrs" >> $SYMBOLS_FILE
+        echo "Instaled layout   qwery-with-colemak-altgr      us: English (QWERTY with colemak altgr)"
     fi
 done
 
