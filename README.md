@@ -96,6 +96,8 @@ The dead keys are in easy to remember positions:
 
 More information about [Colemak multilingual support here](https://colemak.com/Multilingual).
 
+The <xkb>CAPS</xkb> key keeps being CAPSLOCK.
+
 ## Installation
 
 ### On Linux
