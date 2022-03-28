@@ -20,4 +20,5 @@ xkb_symbols "altgr-intl-pt-enhanced" {
     key <AC05> { [        g, G,           otilde,       Otilde   ] };
     key <AB03> { [        c, C,           ccedilla,     Ccedilla ] };
     key <AB05> { [        b, B,           copyright,    cent     ] };
+    key <AC06> { [        h, H,           masculine,    ordfeminine] };
 };
