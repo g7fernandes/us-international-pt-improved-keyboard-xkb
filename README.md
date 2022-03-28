@@ -28,7 +28,11 @@ In the US Intl. layout, the acute accents can be easily typed using the apostrop
 
 The third level of the keys of the letters <kbd>F</kbd>, <kbd>G</kbd>, <kbd>H</kbd> and <kbd>J</kbd> are vacant, since they hold the same characters of the first level in the US Intl. layout.
 
+The US layout also miss the masculine and feminine symbols ª and º.
+
 ## The Layouts
+
+All have ª and º added to the 4th and 3rd level of the <kbd>H</kbd> key <AC06>.
 
 ### US Intl. Portuguese Enhanced
 
