@@ -22,4 +22,5 @@ xkb_symbols "altgr-intl-pt-enh-circum-lv2" {
     key <AB05> { [        b, B,           copyright,    cent     ] };
     // except circumflex
     key <AE06> { [    6, dead_circumflex,    onequarter,      asciicircum ] };
+    key <AC06> { [        h, H,           masculine,    ordfeminine] };
 };
