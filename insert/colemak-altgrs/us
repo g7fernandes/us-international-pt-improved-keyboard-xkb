@@ -33,7 +33,7 @@ xkb_symbols "qwery-with-colemak-altgr" {
     key <AD01> { [            q,            Q,      adiaeresis,       Adiaeresis ] };
     key <AD02> { [            w,            W,           aring,            Aring ] };
     key <AD03> { [            e,            E,          eacute,           Eacute ] };
-    key <AD04> { [            r,            R,      dead_grave,       dead_caron ] };
+    key <AD04> { [            r,            R,      dead_grave,       ascii_tilde ] };
     key <AD05> { [            t,            T,      dead_acute, dead_doubleacute ] };
     key <AD06> { [            y,            Y,      udiaeresis,       Udiaeresis ] };
     key <AD07> { [            u,            U,          uacute,           Uacute ] };
@@ -48,8 +48,8 @@ xkb_symbols "qwery-with-colemak-altgr" {
     key <AC02> { [            s,            S,          ssharp,        0x1001e9e ] };
     key <AC03> { [            d,            D,  dead_diaeresis,       asciitilde ] };
     key <AC04> { [            f,            F,          atilde,           Atilde ] };
-    key <AC05> { [            g,            G,     dead_ogonek,       asciitilde ] };
-    key <AC06> { [            h,            H,       masculine,      ordfeminine ] };
+    key <AC05> { [            g,            G,     dead_ogonek,       masculine ] };
+    key <AC06> { [            h,            H,       dead_caron,      ordfeminine ] };
     key <AC07> { [            j,            J,         dstroke,          Dstroke ] };
     key <AC08> { [            k,            K,  dead_abovering,       asciitilde ] };
     key <AC09> { [            l,            L,         lstroke,          Lstroke ] };
