@@ -30,6 +30,8 @@ The third level of the keys of the letters <kbd>F</kbd>, <kbd>G</kbd>, <kbd>H</k
 
 The US layout also miss the masculine and feminine symbols ª and º.
 
+MacOS has an ["international layout"](https://i.stack.imgur.com/OWKn4.png) with all accents. But the letters don't come with the accents.
+
 ## The Layouts
 
 All have ª and º added to the 4th and 3rd level of the <kbd>H</kbd> key <AC06>.
@@ -138,5 +140,7 @@ The proposed layouts in the **main branch** of this repository must follow the g
 ## Relate projects
 
 * [German Portuguese Keyboard Layout](https://github.com/g7fernandes/german-portuguese-keyboard-xkb). Layout for iso-de keyboards improved for portuguese.
+* [MacOS keyboard layout for windows](https://github.com/adunning/Mac-Keyboard-Layouts-for-Windows)
+
 
 # Layout do Teclado EUA Internacional melhorado para a Língua Portuguesa
